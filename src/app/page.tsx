@@ -28,7 +28,6 @@ import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PortableText } from '@portabletext/react';
 import SpotlightCursor from '@/components/magicui/spotlight-cursor';
 import SwipeGrid from '@/components/swipe-grid';
 import HeroImage from '@/components/HeroImage';
