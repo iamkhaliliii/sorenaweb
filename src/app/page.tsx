@@ -163,11 +163,11 @@ function Hero() {
         <Navbar
         />
         <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
-          <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.9]">
-          See your customers' voices.
+          <h1 className="font-display text-5xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-6xl/[0.8] md:text-8xl/[0.9]">
+          Turn raw feedback into insight on autopilot
           </h1>
           <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-          Sorena listens to your users across 30+ tools and delivers insights you can act on.
+          Unify feedback from every customer touchpoint and uncover what matters most — without tagging, sorting, or guessing.
           </p>
           <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
             <Button href="#">Get started</Button>
@@ -294,7 +294,7 @@ function ProblemSolutionSection() {
             </div>
             <blockquote className="mt-4">
               <p className="text-2xl  max-w-3xl font-medium leading-relaxed text-white">
-                "We know our users are trying to tell us something important, but it's scattered across a dozen tools. By the time we've pieced it together, it's too late."
+                &quot;We know our users are trying to tell us something important, but it&apos;s scattered across a dozen tools. By the time we&apos;ve pieced it together, it&apos;s too late.&quot;
               </p>
               <footer className="mt-3  text-gray-400">
                 — Product leaders everywhere
@@ -340,7 +340,7 @@ function BentoSection() {
         <BentoCard
           eyebrow="COPILOT"
           title="Always-on product teammate"
-          description="Your AI teammate that monitors every customer message, flags what matters, and summarizes the “why” behind user behavior—automatically."
+          description='Your AI teammate that monitors every customer message, flags what matters, and summarizes the "why" behind user behavior—automatically.'
           graphic={
               <LinkedAvatars />
           }
@@ -355,7 +355,7 @@ function BentoSection() {
         />
         <BentoCard
           eyebrow="DASHBOARD"
-          title="See, before it’s too late"
+          title="See, before it's too late"
           description="Explore trends, feature demand, sentiment shifts, and key quotes—all in one clean, minimal dashboard. Built for decision-making, not just reporting."
           graphic={<Chart />}
           fade={['bottom']}
@@ -374,7 +374,7 @@ function BentoSection() {
         <BentoCard
           eyebrow="Clustering Engine"
           title="Detects recurring bugs, feature requests, and sentiment trends"
-          description="With our advanced data mining, you'll know which companies your leads are talking to and exactly how much they're being charged."
+          description="With our advanced data mining, you&apos;ll know which companies your leads are talking to and exactly how much they&apos;re being charged."
           graphic={
             <div className="absolute inset-0 bg-[url(/screenshots/cluster.png)] bg-[size:630px_320px] bg-no-repeat" />
 
@@ -411,7 +411,7 @@ function DarkBentoSection({ setIsNetworkingCardHovered }: DarkBentoSectionProps)
               dark
               eyebrow="INTELLIGENCE"
               title="Every message, deeply understood."
-              description="Sorena doesn’t just summarize your feedback—it reads between the lines. From a complaint in Intercom to a hesitation in Slack, it understands tone, emotion, and request. Like a team member who never misses nuance."
+              description="Sorena doesn't just summarize your feedback—it reads between the lines. From a complaint in Intercom to a hesitation in Slack, it understands tone, emotion, and request. Like a team member who never misses nuance."
               graphic={
                 <div className="h-80 bg-[url(/screenshots/chat.png)] bg-[size:860px_382px] bg-no-repeat" />
               }
@@ -542,7 +542,7 @@ function DashboardsSection() {
                   How to reset password?
                 </div>
                 <div className="text-xs text-white/80 bg-white/5 p-1.5 rounded">
-                  Can't connect account
+                  Can&apos;t connect account
                 </div>
               </div>
             </div>
@@ -565,7 +565,7 @@ function DashboardsSection() {
               <div className="text-xs text-pink-300">User Quotes</div>
               <div className="mt-2 bg-white/5 p-3 rounded border border-white/10">
                 <p className="text-xs text-white/80 italic">
-                  "This product has transformed how we handle feedback!"
+                  &quot;This product has transformed how we handle feedback!&quot;
                 </p>
               </div>
             </div>
