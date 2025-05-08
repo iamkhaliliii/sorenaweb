@@ -14,6 +14,13 @@ import { Screenshot } from '@/components/screenshot'
 import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic';
+
+// Dynamically import Keyboard
+const Keyboard = dynamic(
+  () => import('@/components/keyboard').then(mod => mod.Keyboard),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   description: 'Sorena turns scattered customer feedback into actionable insights through AI-powered dashboards.',
