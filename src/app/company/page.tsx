@@ -1,4 +1,3 @@
-import { AnimatedNumber } from '@/components/animated-number'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
@@ -6,6 +5,17 @@ import { GradientBackground } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic';
+
+// Dynamically import AnimatedNumber
+const AnimatedNumber = dynamic(
+  () => import('@/components/animated-number').then(mod => mod.AnimatedNumber),
+  { 
+    ssr: false,
+    // Optional: Add a loading fallback if needed
+    // loading: () => <span className="text-6xl font-medium tracking-tight">...</span> 
+  }
+);
 
 export const metadata: Metadata = {
   title: 'Company',

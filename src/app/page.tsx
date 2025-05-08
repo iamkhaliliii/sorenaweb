@@ -28,7 +28,6 @@ import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import SpotlightCursor from '@/components/magicui/spotlight-cursor';
 import SwipeGrid from '@/components/swipe-grid';
 import HeroImage from '@/components/HeroImage';
 import { Mark } from '@/components/logo'
@@ -37,6 +36,12 @@ import { Chart } from '@/components/Chart';
 // Dynamically import IconCloud with SSR disabled
 const DynamicIconCloud = dynamic(
   () => import('@/components/ui/interactive-icon-cloud').then(mod => mod.IconCloud),
+  { ssr: false }
+);
+
+// Add dynamic import for SpotlightCursor
+const DynamicSpotlightCursor = dynamic(
+  () => import('@/components/magicui/spotlight-cursor'),
   { ssr: false }
 );
 
@@ -746,7 +751,7 @@ export default function Home() {
       <SecondaryFeatures />
       {/* <Testimonials /> */}
       <Footer />
-      {isNetworkingCardHovered && <SpotlightCursor />}
+      {isNetworkingCardHovered && <DynamicSpotlightCursor />}
     </div>
   )
 }
