@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { Section, Container } from "@/components/craft";
-import Logo from "@/images/logos/mirage.svg";
+import { Container, Section } from '@/components/craft'
+import Logo from '@/images/logos/mirage.svg'
 
 const HeroImage = () => {
   return (
@@ -18,9 +18,7 @@ const HeroImage = () => {
               height={108}
               src="https://newsroom.porsche.com/dam/jcr:a388376a-c5e2-4363-939b-6fbacd867a64/718_neu_2023.png"
               alt=""
-            ></img>{
-              " "
-            }
+            ></img>{' '}
             with special {/* eslint-disable-next-line */}
             <img
               className="my-auto -mt-3 inline w-24 md:-mt-6 md:w-48"
@@ -28,9 +26,7 @@ const HeroImage = () => {
               height={108}
               src="https://newsroom.porsche.com/dam/jcr:a388376a-c5e2-4363-939b-6fbacd867a64/718_neu_2023.png"
               alt=""
-            ></img>{
-              " "
-            }
+            ></img>{' '}
             image capabilities. {/* eslint-disable-next-line */}
           </h1>
           {/* logo features */}
@@ -47,7 +43,7 @@ const HeroImage = () => {
             </p>
             <div className="grid gap-2 md:flex">
               <p className="opacity-50">
-                Visit craftui.org to use our components for free.{" "}
+                Visit craftui.org to use our components for free.{' '}
               </p>
               <Link className="transition-all hover:opacity-70" href="#">
                 Check it Out -{`>`}
@@ -61,7 +57,7 @@ const HeroImage = () => {
         </div>
       </Container>
     </Section>
-  );
-};
+  )
+}
 
-export default HeroImage; 
+export default HeroImage

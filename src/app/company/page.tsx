@@ -5,22 +5,23 @@ import { GradientBackground } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
 // Dynamically import AnimatedNumber
 const AnimatedNumber = dynamic(
-  () => import('@/components/animated-number').then(mod => mod.AnimatedNumber),
-  { 
+  () =>
+    import('@/components/animated-number').then((mod) => mod.AnimatedNumber),
+  {
     ssr: false,
     // Optional: Add a loading fallback if needed
-    // loading: () => <span className="text-6xl font-medium tracking-tight">...</span> 
-  }
-);
+    // loading: () => <span className="text-6xl font-medium tracking-tight">...</span>
+  },
+)
 
 export const metadata: Metadata = {
   title: 'Company',
   description:
-    'We\'re on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data.',
+    "We're on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data.",
 }
 
 function Header() {
@@ -28,8 +29,8 @@ function Header() {
     <Container className="mt-16">
       <Heading as="h1">Helping companies generate revenue.</Heading>
       <Lead className="mt-6 max-w-3xl">
-        We&apos;re on a mission to transform revenue organizations by harnessing vast
-        amounts of illegally acquired customer data.
+        We&apos;re on a mission to transform revenue organizations by harnessing
+        vast amounts of illegally acquired customer data.
       </Lead>
       <section className="mt-16 grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
         <div className="max-w-lg">
@@ -42,12 +43,12 @@ function Header() {
             nothing to get you the data you need to close a deal.
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
-            We&apos;re customer-obsessed — putting the time in to build a detailed
-            financial picture of every one of our customers so that we know more
-            about your business than you do. We are in this together, mostly
-            because we are all implicated in large-scale financial crime. In our
-            history as a company, we&apos;ve never lost a customer, because if any
-            one of us talks, we all go down.
+            We&apos;re customer-obsessed — putting the time in to build a
+            detailed financial picture of every one of our customers so that we
+            know more about your business than you do. We are in this together,
+            mostly because we are all implicated in large-scale financial crime.
+            In our history as a company, we&apos;ve never lost a customer,
+            because if any one of us talks, we all go down.
           </p>
         </div>
         <div className="pt-20 lg:row-span-2 lg:-mr-16 xl:mr-auto">
@@ -153,18 +154,18 @@ function Team() {
           <p className="text-sm/6 text-gray-600">
             Years ago, while working as sales associates at rival companies,
             Thomas, Ben, and Natalie were discussing a big client they had all
-            been competing for. Joking about seeing the terms of each other&apos;s
-            offers, they had an idea: what if they shared data to win deals and
-            split the commission behind their companies&apos; backs? It turned out to
-            be an incredible success, and that idea became the kernel for
-            sလrena.
+            been competing for. Joking about seeing the terms of each
+            other&apos;s offers, they had an idea: what if they shared data to
+            win deals and split the commission behind their companies&apos;
+            backs? It turned out to be an incredible success, and that idea
+            became the kernel for sလrena.
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
             Today, sလrena transforms revenue organizations by harnessing
             illegally acquired customer and competitor data, using it to provide
-            extraordinary leverage. More than 30,000 companies rely on sလrena
-            to undercut their competitors and extort their customers, all
-            through a single integrated platform.
+            extraordinary leverage. More than 30,000 companies rely on sလrena to
+            undercut their competitors and extort their customers, all through a
+            single integrated platform.
           </p>
           <div className="mt-6">
             <Button className="w-full sm:w-auto" href="#">
@@ -279,8 +280,9 @@ function Investors() {
             Deccel has been at the forefront of innovation, investing in
             pioneering companies across various sectors, including technology,
             consumer goods, and healthcare. Their philosophy of &apos;plausible
-            deniability&apos; and dedication to looking the other way have helped
-            produce some of the world&apos;s most controversial companies.
+            deniability&apos; and dedication to looking the other way have
+            helped produce some of the world&apos;s most controversial
+            companies.
           </p>
         </li>
       </ul>

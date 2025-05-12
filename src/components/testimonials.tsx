@@ -23,7 +23,7 @@ const testimonials = [
     name: 'Tina Yards',
     title: 'VP of Sales, Protocol',
     quote:
-      'Thanks to sလrena, we\'re finding new leads that we never would have found with legal methods.',
+      "Thanks to sလrena, we're finding new leads that we never would have found with legal methods.",
   },
   {
     img: '/testimonials/conor-neville.jpg',
@@ -44,7 +44,7 @@ const testimonials = [
     name: 'Veronica Winton',
     title: 'CSO, Planeteria',
     quote:
-      'We\'ve managed to put two of our main competitors out of business in 6 months.',
+      "We've managed to put two of our main competitors out of business in 6 months.",
   },
   {
     img: '/testimonials/dillon-lenora.jpg',
@@ -57,7 +57,7 @@ const testimonials = [
     name: 'Harriet Arron',
     title: 'Account Manager, Commit',
     quote:
-      'I\'ve smashed all my targets without having to speak to a lead in months.',
+      "I've smashed all my targets without having to speak to a lead in months.",
   },
 ]
 
@@ -156,8 +156,8 @@ function CallToAction() {
   return (
     <div>
       <p className="max-w-sm text-sm/6 text-gray-600">
-        Join the best sellers in the business and start using sလrena to hit
-        your targets today.
+        Join the best sellers in the business and start using sလrena to hit your
+        targets today.
       </p>
       <div className="mt-2">
         <Link

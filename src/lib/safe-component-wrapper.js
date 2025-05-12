@@ -1,7 +1,6 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
-import { isBrowser } from './document-helper';
+import { useEffect, useState } from 'react'
 
 /**
  * Higher Order Component to safely render components that use browser APIs
@@ -10,34 +9,34 @@ import { isBrowser } from './document-helper';
 export function withBrowserSafety(Component) {
   // Return a new component
   return function SafeComponent(props) {
-    const [isMounted, setIsMounted] = useState(false);
-    
+    const [isMounted, setIsMounted] = useState(false)
+
     useEffect(() => {
-      setIsMounted(true);
-    }, []);
-    
+      setIsMounted(true)
+    }, [])
+
     // Only render the component on the client side
     if (!isMounted) {
-      return null; // or a loading state/placeholder
+      return null // or a loading state/placeholder
     }
-    
-    return <Component {...props} />;
-  };
+
+    return <Component {...props} />
+  }
 }
 
 /**
  * Component to use as a wrapper for browser-only content
  */
 export function BrowserOnly({ children, fallback = null }) {
-  const [isMounted, setIsMounted] = useState(false);
-  
+  const [isMounted, setIsMounted] = useState(false)
+
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  
+    setIsMounted(true)
+  }, [])
+
   if (!isMounted) {
-    return fallback;
+    return fallback
   }
-  
-  return <>{children}</>;
-} 
+
+  return <>{children}</>
+}

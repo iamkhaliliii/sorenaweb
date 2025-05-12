@@ -1,16 +1,15 @@
 'use client'
 
-import { useId } from 'react'
-import Image, { type ImageProps } from 'next/image'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
+import Image, { type ImageProps } from 'next/image'
+import { useId } from 'react'
 
 import { Container } from '@/components/container'
 import screenshotContacts from '@/images/screenshots/contacts.png'
 import screenshotInventory from '@/images/screenshots/inventory.png'
 import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
-import { Subheading } from './text'
-import { Heading } from './text'
+import { Heading, Subheading } from './text'
 
 interface Feature {
   name: React.ReactNode
@@ -57,8 +56,7 @@ const features: Array<Feature> = [
   },
   {
     name: 'Understand & Insight',
-    summary:
-      'Reveal what matters—before it’s too late.',
+    summary: 'Reveal what matters—before it’s too late.',
     description:
       'Our AI groups feedback by theme, emotion, topic, and segment to surface trends, bugs, and new opportunities.',
     image: screenshotInventory,
@@ -85,8 +83,7 @@ const features: Array<Feature> = [
   },
   {
     name: 'Act',
-    summary:
-      'Deliver insights where decisions happen.',
+    summary: 'Deliver insights where decisions happen.',
     description:
       'Push feature requests to Productboard, bug clusters to Jira, or user quotes to Slack. No copy-paste. No delay.',
     image: screenshotContacts,
@@ -153,7 +150,7 @@ function Feature({
 
 function FeaturesMobile() {
   return (
-    <div className="-mx-4 mt-20 flex flex-col gap-y-10 overflow-hidden px-4 sm:-mx-6 sm:px-6 lg:hidden bg-gray-100">
+    <div className="-mx-4 mt-20 flex flex-col gap-y-10 overflow-hidden bg-gray-100 px-4 sm:-mx-6 sm:px-6 lg:hidden">
       {features.map((feature) => (
         <div key={feature.summary}>
           <Feature feature={feature} className="mx-auto max-w-2xl" isActive />
@@ -236,11 +233,12 @@ export function SecondaryFeatures() {
       aria-label="Features for simplifying everyday business tasks"
       className="pt-20 pb-14 sm:pt-32 sm:pb-20 lg:pb-32"
     >
-        <Container>
+      <Container>
         <div className="">
-        <Subheading>Roadmap</Subheading>
-        <Heading as="h3" className="mt-2 max-w-3xl">
-From Raw Feedback to Aligned Action        </Heading>
+          <Subheading>Roadmap</Subheading>
+          <Heading as="h3" className="mt-2 max-w-3xl">
+            From Raw Feedback to Aligned Action{' '}
+          </Heading>
         </div>
         <FeaturesMobile />
         <FeaturesDesktop />

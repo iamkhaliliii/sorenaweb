@@ -90,7 +90,7 @@ function Logo({
       alt=""
       src={src}
       style={{ left, top } as React.CSSProperties}
-      className="absolute p-4 size-16 rounded-full bg-white shadow-sm ring-1 ring-black/5"
+      className="absolute size-16 rounded-full bg-white p-4 shadow-sm ring-1 ring-black/5"
     />
   )
 }

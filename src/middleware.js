@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
 // This middleware runs before pages/components and can be used to modify responses
 export function middleware(request) {
   // We're just returning the request as-is here
   // But this ensures the middleware is active
-  return NextResponse.next();
+  return NextResponse.next()
 }
 
 // These are the paths the middleware will run on
@@ -19,4 +19,4 @@ export const config = {
      */
     '/((?!api|_next|_static|favicon.ico|sitemap.xml).*)',
   ],
-}; 
+}

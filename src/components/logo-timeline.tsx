@@ -1,8 +1,10 @@
 import { clsx } from 'clsx'
 // import { Mark } from './logo'
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
-const DynamicMark = dynamic(() => import('./logo').then(mod => mod.Mark), { ssr: false });
+const DynamicMark = dynamic(() => import('./logo').then((mod) => mod.Mark), {
+  ssr: false,
+})
 
 function Row({ children }: { children: React.ReactNode }) {
   return (
@@ -63,12 +65,24 @@ export function LogoTimeline() {
         <Row>
           <Logo
             label="Reviews"
-            srcs={["/logo-timeline/appstore.svg","/logo-timeline/googleplay.svg","/logo-timeline/Trustpilot.svg","/logo-timeline/G2.svg","/logo-timeline/Capterra.svg"]}
+            srcs={[
+              '/logo-timeline/appstore.svg',
+              '/logo-timeline/googleplay.svg',
+              '/logo-timeline/Trustpilot.svg',
+              '/logo-timeline/G2.svg',
+              '/logo-timeline/Capterra.svg',
+            ]}
             className="[animation-delay:0s] [animation-duration:60s]"
           />
           <Logo
             label="Social Channels"
-            srcs={["/logo-timeline/x.svg","/logo-timeline/linkedin.svg","/logo-timeline/facebook.svg","/logo-timeline/Reddit.svg","/logo-timeline/youtube.svg"]}
+            srcs={[
+              '/logo-timeline/x.svg',
+              '/logo-timeline/linkedin.svg',
+              '/logo-timeline/facebook.svg',
+              '/logo-timeline/Reddit.svg',
+              '/logo-timeline/youtube.svg',
+            ]}
             className="[animation-delay:-30s] [animation-duration:60s]"
           />
         </Row>
@@ -77,12 +91,20 @@ export function LogoTimeline() {
         <Row>
           <Logo
             label="Community"
-            srcs={["/logo-timeline/discord.svg","/logo-timeline/slack.svg","/logo-timeline/bettermode.svg"]}
+            srcs={[
+              '/logo-timeline/discord.svg',
+              '/logo-timeline/slack.svg',
+              '/logo-timeline/bettermode.svg',
+            ]}
             className="[animation-delay:0s] [animation-duration:70s]"
           />
           <Logo
             label="Customer Support"
-            srcs={["/logo-timeline/Intercom.svg","/logo-timeline/zendesk.svg","/logo-timeline/freshdesk.svg"]}
+            srcs={[
+              '/logo-timeline/Intercom.svg',
+              '/logo-timeline/zendesk.svg',
+              '/logo-timeline/freshdesk.svg',
+            ]}
             className="[animation-delay:-35s] [animation-duration:70s]"
           />
         </Row>
@@ -91,12 +113,21 @@ export function LogoTimeline() {
         <Row>
           <Logo
             label="Direct Conversations"
-            srcs={["/logo-timeline/gmail.svg","/logo-timeline/hubspot.svg","/logo-timeline/zoom.svg","/logo-timeline/Salesforce.svg"]}
+            srcs={[
+              '/logo-timeline/gmail.svg',
+              '/logo-timeline/hubspot.svg',
+              '/logo-timeline/zoom.svg',
+              '/logo-timeline/Salesforce.svg',
+            ]}
             className="[animation-delay:0s] [animation-duration:50s]"
           />
           <Logo
             label="Surveys & NPS"
-            srcs={["/logo-timeline/Typeform.svg","/logo-timeline/Airtable.svg","/logo-timeline/GoogleForms.svg"]}
+            srcs={[
+              '/logo-timeline/Typeform.svg',
+              '/logo-timeline/Airtable.svg',
+              '/logo-timeline/GoogleForms.svg',
+            ]}
             className="[animation-delay:-25s] [animation-duration:50s]"
           />
         </Row>
@@ -105,12 +136,22 @@ export function LogoTimeline() {
         <Row>
           <Logo
             label="Reviews"
-            srcs={["/logo-timeline/appstore.svg","/logo-timeline/googleplay.svg","/logo-timeline/Trustpilot.svg","/logo-timeline/G2.svg","/logo-timeline/Capterra.svg"]}
+            srcs={[
+              '/logo-timeline/appstore.svg',
+              '/logo-timeline/googleplay.svg',
+              '/logo-timeline/Trustpilot.svg',
+              '/logo-timeline/G2.svg',
+              '/logo-timeline/Capterra.svg',
+            ]}
             className="[animation-delay:0s] [animation-duration:65s]"
           />
           <Logo
             label="Customer Support"
-            srcs={["/logo-timeline/Intercom.svg","/logo-timeline/zendesk.svg","/logo-timeline/freshdesk.svg"]}
+            srcs={[
+              '/logo-timeline/Intercom.svg',
+              '/logo-timeline/zendesk.svg',
+              '/logo-timeline/freshdesk.svg',
+            ]}
             className="[animation-delay:-32s] [animation-duration:65s]"
           />
         </Row>
@@ -119,12 +160,23 @@ export function LogoTimeline() {
         <Row>
           <Logo
             label="Social Channels"
-            srcs={["/logo-timeline/x.svg","/logo-timeline/linkedin.svg","/logo-timeline/facebook.svg","/logo-timeline/Reddit.svg","/logo-timeline/youtube.svg"]}
+            srcs={[
+              '/logo-timeline/x.svg',
+              '/logo-timeline/linkedin.svg',
+              '/logo-timeline/facebook.svg',
+              '/logo-timeline/Reddit.svg',
+              '/logo-timeline/youtube.svg',
+            ]}
             className="[animation-delay:0s] [animation-duration:75s]"
           />
           <Logo
             label="Direct Conversations"
-            srcs={["/logo-timeline/gmail.svg","/logo-timeline/hubspot.svg","/logo-timeline/zoom.svg","/logo-timeline/Salesforce.svg"]}
+            srcs={[
+              '/logo-timeline/gmail.svg',
+              '/logo-timeline/hubspot.svg',
+              '/logo-timeline/zoom.svg',
+              '/logo-timeline/Salesforce.svg',
+            ]}
             className="[animation-delay:-37s] [animation-duration:75s]"
           />
         </Row>
@@ -133,12 +185,20 @@ export function LogoTimeline() {
         <Row>
           <Logo
             label="Community"
-            srcs={["/logo-timeline/discord.svg","/logo-timeline/slack.svg","/logo-timeline/bettermode.svg"]}
+            srcs={[
+              '/logo-timeline/discord.svg',
+              '/logo-timeline/slack.svg',
+              '/logo-timeline/bettermode.svg',
+            ]}
             className="[animation-delay:0s] [animation-duration:55s]"
           />
           <Logo
             label="Surveys & NPS"
-            srcs={["/logo-timeline/Typeform.svg","/logo-timeline/Airtable.svg","/logo-timeline/GoogleForms.svg"]}
+            srcs={[
+              '/logo-timeline/Typeform.svg',
+              '/logo-timeline/Airtable.svg',
+              '/logo-timeline/GoogleForms.svg',
+            ]}
             className="[animation-delay:-27s] [animation-duration:55s]"
           />
         </Row>

@@ -3,7 +3,6 @@ import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { Gradient, GradientBackground } from '@/components/gradient'
 import { Link } from '@/components/link'
-import { LogoCloud } from '@/components/logo-cloud'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
     'Companies all over the world have closed millions of deals with sလrena. Sign up today and start selling smarter.',
 }
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 const tiers = [
   {
@@ -167,7 +166,9 @@ function PricingCard({ tier }: { tier: (typeof tiers)[number] }) {
           </div>
           <div className="mt-8">
             <Button href={tier.href}>
-              {tier.priceMonthly !== undefined ? 'Start a free trial' : 'Contact Sales'}
+              {tier.priceMonthly !== undefined
+                ? 'Start a free trial'
+                : 'Contact Sales'}
             </Button>
           </div>
           <div className="mt-8">
@@ -463,7 +464,8 @@ function FrequentlyAskedQuestions() {
           </dl>
           <dl>
             <dt className="text-sm font-semibold">
-              Can I customize the workflow to match our company&apos;s deal process?
+              Can I customize the workflow to match our company&apos;s deal
+              process?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
               Yes, our platform is highly customizable, although there should be
@@ -508,7 +510,7 @@ function FrequentlyAskedQuestions() {
 export default function Pricing() {
   // Default to first tier instead of using searchParams directly
   // The tier selection will be handled client-side with useState
-  const defaultTier = tiers[0];
+  const defaultTier = tiers[0]
 
   return (
     <main className="overflow-hidden">

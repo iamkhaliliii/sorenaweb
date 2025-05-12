@@ -1,50 +1,49 @@
-"use client";
-import Image from "next/image";
-import { useEffect, useRef } from "react";
-import X_svg from "@/images/Voc/x.svg";
-import facebook_svg from "@/images/Voc/f.svg";
+'use client'
+import facebook_svg from '@/images/Voc/f.svg'
+import X_svg from '@/images/Voc/x.svg'
+import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { Heading, Subheading } from "@/components/text";
+import { Heading, Subheading } from '@/components/text'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 //optional hook for smooth scrolling
-import useLenis from "@/hooks/useLenis";
+import useLenis from '@/hooks/useLenis'
 
-const images = [
-  X_svg,
-  facebook_svg,
-];
+const images = [X_svg, facebook_svg]
 
 const SwipeGrid = () => {
-  const grid = useRef<any>(null);
-  const gridWrap = useRef<any>(null);
+  const grid = useRef<any>(null)
+  const gridWrap = useRef<any>(null)
 
-  const hasRun = useRef(false);
+  const hasRun = useRef(false)
 
   const applyAnimation = () => {
     // Register Scroll Triggren
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger)
 
     // Child elements of grid
-    const gridItems = grid.current?.querySelectorAll(".grid__item");
-    const gridItemsInner = [...gridItems].map((item) => item.querySelector(".grid__item-inner"));
+    const gridItems = grid.current?.querySelectorAll('.grid__item')
+    const gridItemsInner = [...gridItems].map((item) =>
+      item.querySelector('.grid__item-inner'),
+    )
 
     // Define GSAP timeline with ScrollTrigger
     const timeline = gsap.timeline({
-      defaults: { ease: "none" },
+      defaults: { ease: 'none' },
       scrollTrigger: {
         trigger: gridWrap.current,
-        start: "top bottom+=5%",
-        end: "bottom top-=5%",
+        start: 'top bottom+=5%',
+        end: 'bottom top-=5%',
         scrub: true,
         // markers: true // Optional: for debugging
       },
-    });
+    })
 
-    grid.current.style.perspective = "1000px";
-    grid.current.style.width = "calc(1 / 0.65 * 100%)";
-    grid.current.style.height = "calc(1 / 0.5 * 100%)";
+    grid.current.style.perspective = '1000px'
+    grid.current.style.width = 'calc(1 / 0.65 * 100%)'
+    grid.current.style.height = 'calc(1 / 0.5 * 100%)'
 
     timeline
       .set(gridWrap.current, {
@@ -59,36 +58,38 @@ const SwipeGrid = () => {
         { xPercent: () => gsap.utils.random(500, 1000) },
         0,
       )
-      .fromTo(gridItemsInner, { scale: 2 }, { scale: 0.5 }, 0);
-  };
+      .fromTo(gridItemsInner, { scale: 2 }, { scale: 0.5 }, 0)
+  }
 
-  useLenis();
+  useLenis()
 
   useEffect(() => {
     //make sure we run this function only once
     if (!hasRun.current && grid.current) {
-      applyAnimation();
-      window.scrollTo({ top: 0 });
-      hasRun.current = true;
+      applyAnimation()
+      window.scrollTo({ top: 0 })
+      hasRun.current = true
     }
-  }, [grid]);
+  }, [grid])
 
   return (
-    <div className="z-10 w-full overflow-hidden mt-100">
-              <div className="mx-auto max-w-7xl">
-          <Subheading>The Challenge</Subheading>
-          <Heading as="h2" className="mt-2 mb-8 max-w-4xl">
-          Product, Support, and Marketing teams are overwhelmed by feedback—but still flying blind.
-          </Heading></div>
-          
+    <div className="z-10 mt-100 w-full overflow-hidden">
+      <div className="mx-auto max-w-7xl">
+        <Subheading>The Challenge</Subheading>
+        <Heading as="h2" className="mt-2 mb-8 max-w-4xl">
+          Product, Support, and Marketing teams are overwhelmed by feedback—but
+          still flying blind.
+        </Heading>
+      </div>
+
       <section className="relative">
         <div
           ref={grid}
           className="grid h-[calc(1/1*100%)] w-[calc(1/1*100%)] place-items-center p-8"
-          style={{ perspective: "1500px" }}
+          style={{ perspective: '1500px' }}
         >
           <div
-            style={{ transformStyle: "preserve-3d" }}
+            style={{ transformStyle: 'preserve-3d' }}
             ref={gridWrap}
             className="grid h-auto w-full grid-cols-4 gap-[2vw]"
           >
@@ -114,7 +115,7 @@ const SwipeGrid = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default SwipeGrid; 
+export default SwipeGrid

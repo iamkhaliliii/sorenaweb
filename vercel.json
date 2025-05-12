@@ -6,4 +6,4 @@
   "env": {
     "NEXT_PUBLIC_SITE_URL": "https://your-vercel-deployment-url.vercel.app"
   }
-} 
+}

@@ -2,50 +2,46 @@
 
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
+import { Chart } from '@/components/Chart'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { Gradient } from '@/components/gradient'
-import { Keyboard } from '@/components/keyboard'
 import { LinkedAvatars } from '@/components/linked-avatars'
-import { LogoCloud } from '@/components/logo-cloud'
 import { LogoCluster } from '@/components/logo-cluster'
-import { LogoTimeline } from '@/components/logo-timeline'
-import { Map } from '@/components/map'
 import { Navbar } from '@/components/navbar'
 import { Screenshot } from '@/components/screenshot'
-import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
-import { ChevronRightIcon } from '@heroicons/react/16/solid'
-import { IconCloud } from "@/components/ui/interactive-icon-cloud";
-import dynamic from 'next/dynamic'
-import { OrbitingCircles } from "@/components/ui/orbiting-circles";
-import { Megaphone, Mail, BarChart, Linkedin, Facebook, AlertCircle, MessageSquare, LineChart, Bug, Lightbulb, AreaChart, Users, BarChart3, TrendingUp, Quote } from "lucide-react";
-import { useEffect, useState } from 'react'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
+import { BarChart3, MessageSquare, Quote, Users } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import Link from 'next/link';
-import SwipeGrid from '@/components/swipe-grid';
-import HeroImage from '@/components/HeroImage';
-import { Chart } from '@/components/Chart';
 
 // Dynamically import IconCloud with SSR disabled
 const DynamicIconCloud = dynamic(
-  () => import('@/components/ui/interactive-icon-cloud').then(mod => mod.IconCloud),
-  { ssr: false }
-);
+  () =>
+    import('@/components/ui/interactive-icon-cloud').then(
+      (mod) => mod.IconCloud,
+    ),
+  { ssr: false },
+)
 
-const DynamicMark = dynamic(() => import('@/components/logo').then(mod => mod.Mark), { ssr: false });
-const DynamicLogoTimeline = dynamic(() => import('@/components/logo-timeline').then(mod => mod.LogoTimeline), { ssr: false });
+const DynamicMark = dynamic(
+  () => import('@/components/logo').then((mod) => mod.Mark),
+  { ssr: false },
+)
+const DynamicLogoTimeline = dynamic(
+  () => import('@/components/logo-timeline').then((mod) => mod.LogoTimeline),
+  { ssr: false },
+)
 
 // Add dynamic import for SpotlightCursor
 const DynamicSpotlightCursor = dynamic(
   () => import('@/components/magicui/spotlight-cursor'),
-  { ssr: false }
-);
+  { ssr: false },
+)
 
 // Added Icons constant with custom SVGs
 const Icons = {
@@ -59,8 +55,11 @@ const Icons = {
   ),
   notion: () => (
     <svg
-      width="100" height="100" viewBox="0 0 100 100"
-      fill="none" xmlns="http://www.w3.org/2000/svg"
+      width="100"
+      height="100"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M6.017 4.313l55.333 -4.087c6.797 -0.583 8.543 -0.19 12.817 2.917l17.663 12.443c2.913 2.14 3.883 2.723 3.883 5.053v68.243c0 4.277 -1.553 6.807 -6.99 7.193L24.467 99.967c-4.08 0.193 -6.023 -0.39 -8.16 -3.113L3.3 79.94c-2.333 -3.113 -3.3 -5.443 -3.3 -8.167V11.113c0 -3.497 1.553 -6.413 6.017 -6.8z"
@@ -76,15 +75,22 @@ const Icons = {
   ),
   openai: () => (
     <svg
-      width="100" height="100" viewBox="0 0 24 24"
+      width="100"
+      height="100"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
+      <path
+        fill="currentColor"
+        d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"
+      />
     </svg>
   ),
   googleDrive: () => (
     <svg
-      width="100" height="100" viewBox="0 0 87.3 78"
+      width="100"
+      height="100"
+      viewBox="0 0 87.3 78"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -115,13 +121,18 @@ const Icons = {
   ),
   whatsapp: () => (
     <svg
-      width="100" height="100" viewBox="0 0 175.216 175.552"
+      width="100"
+      height="100"
+      viewBox="0 0 175.216 175.552"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <linearGradient
           id="b"
-          x1="85.915" x2="86.535" y1="32.567" y2="137.092"
+          x1="85.915"
+          x2="86.535"
+          y1="32.567"
+          y2="137.092"
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0" stopColor="#57d163" />
@@ -129,7 +140,10 @@ const Icons = {
         </linearGradient>
         <filter
           id="a"
-          width="1.115" height="1.114" x="-.057" y="-.057"
+          width="1.115"
+          height="1.114"
+          x="-.057"
+          y="-.057"
           colorInterpolationFilters="sRGB"
         >
           <feGaussianBlur stdDeviation="3.531" />
@@ -166,19 +180,19 @@ function Hero() {
     <div className="relative">
       <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
       <Container className="relative">
-        <Navbar
-        />
+        <Navbar />
         <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
           <h1 className="font-display text-5xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-6xl/[0.8] md:text-8xl/[0.9]">
-          Turn raw feedback into insight on autopilot
+            Turn raw feedback into insight on autopilot
           </h1>
           <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-          Unify feedback from every customer touchpoint and uncover what matters most — without tagging, sorting, or guessing.
+            Unify feedback from every customer touchpoint and uncover what
+            matters most — without tagging, sorting, or guessing.
           </p>
           <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
             <Button href="#">Get started</Button>
             <Button variant="secondary" href="/pricing">
-            Explore plans
+              Explore plans
             </Button>
           </div>
         </div>
@@ -196,81 +210,94 @@ function ProblemSolutionSection() {
           <Heading as="h3" className="mt-2 mb-8 max-w-4xl">
             Teams are drowning in feedback but starving for insights
           </Heading>
-          
+
           {/* Main problem card */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-0 to-gray-50 border border-gray-100">
-            <div className="absolute bottom-0 left-0 h-54 w-80 translate-y-12 -translate-x-12 rounded-full bg-rose-50/80 blur-3xl"></div>
-            
+          <div className="from-gray-0 relative overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-br to-gray-50">
+            <div className="absolute bottom-0 left-0 h-54 w-80 -translate-x-12 translate-y-12 rounded-full bg-rose-50/80 blur-3xl"></div>
+
             <div className="relative p-8 sm:p-10">
-              <h3 className="text-lg text-gray-900 mb-16">
+              <h3 className="mb-16 text-lg text-gray-900">
                 Modern teams are overwhelmed with feedback scattered across:
               </h3>
-              
-              <div className="grid gap-5 sm:grid-cols-4 mb-20">
+
+              <div className="mb-20 grid gap-5 sm:grid-cols-4">
                 {[
                   {
                     icon: <MessageSquare className="h-5 w-5" />,
-                    title: "Support tickets",
-                    examples: "Intercom, Zendesk",
-                    color: "bg-blue-50 text-blue-600",
+                    title: 'Support tickets',
+                    examples: 'Intercom, Zendesk',
+                    color: 'bg-blue-50 text-blue-600',
                   },
                   {
                     icon: <MessageSquare className="h-5 w-5" />,
-                    title: "Emails and Calls",
-                    examples: "Gmail, Gong",
-                    color: "bg-green-50 text-green-600",
+                    title: 'Emails and Calls',
+                    examples: 'Gmail, Gong',
+                    color: 'bg-green-50 text-green-600',
                   },
                   {
                     icon: <Users className="h-5 w-5" />,
-                    title: "Communities",
-                    examples: "Bettermode, Discord",
-                    color: "bg-purple-50 text-purple-600",
+                    title: 'Communities',
+                    examples: 'Bettermode, Discord',
+                    color: 'bg-purple-50 text-purple-600',
                   },
                   {
                     icon: <BarChart3 className="h-5 w-5" />,
-                    title: "Reviews",
-                    examples: "G2, Capterra",
-                    color: "bg-amber-50 text-amber-600",
+                    title: 'Reviews',
+                    examples: 'G2, Capterra',
+                    color: 'bg-amber-50 text-amber-600',
                   },
                 ].map((source, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <div className={`mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${source.color}`}>
+                    <div
+                      className={`mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${source.color}`}
+                    >
                       {source.icon}
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">{source.title}</h4>
+                      <h4 className="font-medium text-gray-900">
+                        {source.title}
+                      </h4>
                       <p className="text-sm text-gray-500">{source.examples}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              
+
               <div className="relative">
-                <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                <div
+                  className="absolute inset-0 flex items-center"
+                  aria-hidden="true"
+                >
                   <div className="w-full border-t border-gray-200"></div>
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="bg-gray-50 px-6 py-1  font-light text-gray-900 border border-gray-100 rounded-full">But...</span>
+                  <span className="rounded-full border border-gray-100 bg-gray-50 px-6 py-1 font-light text-gray-900">
+                    But...
+                  </span>
                 </div>
               </div>
-              
+
               <div className="mt-10 space-y-5">
                 {[
-                  { 
-                    title: "Feedback is unstructured",
-                    description: "Most feedback is buried in support tickets, chats, emails, and reviews with no consistent structure." 
+                  {
+                    title: 'Feedback is unstructured',
+                    description:
+                      'Most feedback is buried in support tickets, chats, emails, and reviews with no consistent structure.',
                   },
-                  { 
-                    title: "Categorization is manual and time-consuming",
-                    description: "Teams spend countless hours tagging, categorizing, and summarizing feedback across tools." 
+                  {
+                    title: 'Categorization is manual and time-consuming',
+                    description:
+                      'Teams spend countless hours tagging, categorizing, and summarizing feedback across tools.',
                   },
-                  { 
-                    title: "Insights are lost in noise",
-                    description: "Critical insights get buried beneath the sheer volume of feedback." 
+                  {
+                    title: 'Insights are lost in noise',
+                    description:
+                      'Critical insights get buried beneath the sheer volume of feedback.',
                   },
-                  { 
-                    title: "Teams struggle to prioritize",
-                    description: "Without clear data, roadmap decisions, bug fixes, and messaging alignment become guesswork." 
+                  {
+                    title: 'Teams struggle to prioritize',
+                    description:
+                      'Without clear data, roadmap decisions, bug fixes, and messaging alignment become guesswork.',
                   },
                 ].map((problem, i) => (
                   <div key={i} className="flex">
@@ -280,29 +307,37 @@ function ProblemSolutionSection() {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="text-base font-medium text-gray-900">{problem.title}</h4>
-                      <p className="mt-1 text-sm text-gray-500">{problem.description}</p>
+                      <h4 className="text-base font-medium text-gray-900">
+                        {problem.title}
+                      </h4>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {problem.description}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          
+
           {/* Quote card */}
           <div className="mt-8 rounded-4xl bg-gray-900 p-6 sm:p-8">
             <div className="flex justify-between">
               <Quote className="h-8 w-8 text-gray-800" />
               <div className="flex items-center">
-                <div className="h-2 w-2 rounded-full bg-teal-400 mr-2"></div>
-                <div className="text-xs uppercase tracking-wider text-gray-500">Reality</div>
+                <div className="mr-2 h-2 w-2 rounded-full bg-teal-400"></div>
+                <div className="text-xs tracking-wider text-gray-500 uppercase">
+                  Reality
+                </div>
               </div>
             </div>
             <blockquote className="mt-4">
-              <p className="text-2xl  max-w-3xl font-medium leading-relaxed text-white">
-                &quot;We know our users are trying to tell us something important, but it&apos;s scattered across a dozen tools. By the time we&apos;ve pieced it together, it&apos;s too late.&quot;
+              <p className="max-w-3xl text-2xl leading-relaxed font-medium text-white">
+                &quot;We know our users are trying to tell us something
+                important, but it&apos;s scattered across a dozen tools. By the
+                time we&apos;ve pieced it together, it&apos;s too late.&quot;
               </p>
-              <footer className="mt-3  text-gray-400">
+              <footer className="mt-3 text-gray-400">
                 — Product leaders everywhere
               </footer>
             </blockquote>
@@ -318,7 +353,7 @@ function FeatureSection() {
     <div className="overflow-hidden">
       <Container className="pb-24">
         <Heading as="h2" className="max-w-3xl">
-        Turn customer noise into product clarity.
+          Turn customer noise into product clarity.
         </Heading>
         <Screenshot
           width={1024}
@@ -332,24 +367,21 @@ function FeatureSection() {
 }
 
 function BentoSection() {
-  const [isNetworkingCardHovered, setIsNetworkingCardHovered] = useState(false);
+  const [isNetworkingCardHovered, setIsNetworkingCardHovered] = useState(false)
 
   return (
     <Container>
       <Subheading>Key Features</Subheading>
       <Heading as="h3" className="mt-2 max-w-3xl">
-      sလrena listens to your users—so you can see them.
+        sလrena listens to your users—so you can see them.
       </Heading>
 
       <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-
         <BentoCard
           eyebrow="COPILOT"
           title="Always-on product teammate"
           description='Your AI teammate that monitors every customer message, flags what matters, and summarizes the "why" behind user behavior—automatically.'
-          graphic={
-              <LinkedAvatars />
-          }
+          graphic={<LinkedAvatars />}
           className="lg:col-span-2 lg:rounded-bl-4xl"
         />
         <BentoCard
@@ -367,7 +399,7 @@ function BentoSection() {
           fade={['bottom']}
           className="max-lg:rounded-b-4xl lg:col-span-2 lg:rounded-br-4xl"
         />
-                <BentoCard
+        <BentoCard
           eyebrow="AI-Powered Categorization"
           title="Uses AI to tag, cluster, and summarize every voice of customer (VoC)"
           description="Automatically cluster and rank feature requests based on frequency, sentiment, and segment."
@@ -380,10 +412,9 @@ function BentoSection() {
         <BentoCard
           eyebrow="Clustering Engine"
           title="Detects recurring bugs, feature requests, and sentiment trends"
-          description="With our advanced data mining, you&apos;ll know which companies your leads are talking to and exactly how much they&apos;re being charged."
+          description="With our advanced data mining, you'll know which companies your leads are talking to and exactly how much they're being charged."
           graphic={
             <div className="absolute inset-0 bg-[url(/screenshots/cluster.png)] bg-[size:630px_320px] bg-no-repeat" />
-
           }
           fade={['bottom']}
           className="lg:col-span-3 lg:rounded-tr-4xl"
@@ -395,16 +426,18 @@ function BentoSection() {
 
 // Define props type for DarkBentoSection
 interface DarkBentoSectionProps {
-  setIsNetworkingCardHovered: (isHovered: boolean) => void;
+  setIsNetworkingCardHovered: (isHovered: boolean) => void
 }
 
-function DarkBentoSection({ setIsNetworkingCardHovered }: DarkBentoSectionProps) {
+function DarkBentoSection({
+  setIsNetworkingCardHovered,
+}: DarkBentoSectionProps) {
   return (
     <div className="mx-2 mb-2 rounded-4xl bg-gray-900 py-32">
       <Container>
         <Subheading dark>How Sorena Helps</Subheading>
         <Heading as="h3" dark className="mt-2 max-w-3xl">
-        From chaos to clarity—automatically.
+          From chaos to clarity—automatically.
         </Heading>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6">
@@ -483,31 +516,33 @@ function DashboardsSection() {
       description:
         'Prioritize development based on real user feedback. Track feature requests, bugs, and sentiment across your product.',
       graphic: (
-        <div className="w-full h-full bg-gray-800/70 rounded-lg overflow-hidden border border-white/10 flex flex-col">
-          <div className="bg-indigo-900/30 p-3 border-b border-white/10">
-            <div className="text-xs text-white/90 font-medium">Product Insights</div>
+        <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-white/10 bg-gray-800/70">
+          <div className="border-b border-white/10 bg-indigo-900/30 p-3">
+            <div className="text-xs font-medium text-white/90">
+              Product Insights
+            </div>
           </div>
-          
-          <div className="p-4 space-y-4">
+
+          <div className="space-y-4 p-4">
             <div className="space-y-2">
               <div className="text-xs text-blue-300">Top Feature Requests</div>
               <div className="flex items-center justify-between">
                 <div className="text-xs text-white/80">Dark mode</div>
-                <div className="w-24 h-1.5 rounded-full overflow-hidden bg-white/10">
+                <div className="h-1.5 w-24 overflow-hidden rounded-full bg-white/10">
                   <div className="h-full w-3/4 bg-blue-400"></div>
                 </div>
               </div>
               <div className="flex items-center justify-between">
                 <div className="text-xs text-white/80">Export to CSV</div>
-                <div className="w-24 h-1.5 rounded-full overflow-hidden bg-white/10">
+                <div className="h-1.5 w-24 overflow-hidden rounded-full bg-white/10">
                   <div className="h-full w-1/2 bg-blue-400"></div>
                 </div>
               </div>
             </div>
-            
+
             <div>
               <div className="text-xs text-purple-300">Sentiment</div>
-              <div className="h-1.5 rounded-full overflow-hidden bg-white/10 mt-2">
+              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
                 <div className="h-full w-4/5 bg-green-400"></div>
               </div>
             </div>
@@ -520,12 +555,14 @@ function DashboardsSection() {
       description:
         'Improve documentation and support efficiency. Identify recurring questions and prevent user waiting times.',
       graphic: (
-        <div className="w-full h-full bg-gray-800/70 rounded-lg overflow-hidden border border-white/10 flex flex-col">
-          <div className="bg-teal-900/30 p-3 border-b border-white/10">
-            <div className="text-xs text-white/90 font-medium">Support Center</div>
+        <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-white/10 bg-gray-800/70">
+          <div className="border-b border-white/10 bg-teal-900/30 p-3">
+            <div className="text-xs font-medium text-white/90">
+              Support Center
+            </div>
           </div>
-          
-          <div className="p-4 space-y-4">
+
+          <div className="space-y-4 p-4">
             <div className="flex justify-between">
               <div className="text-center">
                 <div className="text-xs text-white/70">Open</div>
@@ -540,14 +577,14 @@ function DashboardsSection() {
                 <div className="text-sm text-green-400">67</div>
               </div>
             </div>
-            
+
             <div>
               <div className="text-xs text-teal-300">Top Questions</div>
               <div className="mt-2 space-y-1">
-                <div className="text-xs text-white/80 bg-white/5 p-1.5 rounded">
+                <div className="rounded bg-white/5 p-1.5 text-xs text-white/80">
                   How to reset password?
                 </div>
-                <div className="text-xs text-white/80 bg-white/5 p-1.5 rounded">
+                <div className="rounded bg-white/5 p-1.5 text-xs text-white/80">
                   Can&apos;t connect account
                 </div>
               </div>
@@ -561,31 +598,34 @@ function DashboardsSection() {
       description:
         'Enhance messaging with authentic user language. Extract positive quotes and address common objections in your marketing.',
       graphic: (
-        <div className="w-full h-full bg-gray-800/70 rounded-lg overflow-hidden border border-white/10 flex flex-col">
-          <div className="bg-purple-900/30 p-3 border-b border-white/10">
-            <div className="text-xs text-white/90 font-medium">Marketing Insights</div>
+        <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-white/10 bg-gray-800/70">
+          <div className="border-b border-white/10 bg-purple-900/30 p-3">
+            <div className="text-xs font-medium text-white/90">
+              Marketing Insights
+            </div>
           </div>
-          
-          <div className="p-4 space-y-4">
+
+          <div className="space-y-4 p-4">
             <div>
               <div className="text-xs text-pink-300">User Quotes</div>
-              <div className="mt-2 bg-white/5 p-3 rounded border border-white/10">
+              <div className="mt-2 rounded border border-white/10 bg-white/5 p-3">
                 <p className="text-xs text-white/80 italic">
-                  &quot;This product has transformed how we handle feedback!&quot;
+                  &quot;This product has transformed how we handle
+                  feedback!&quot;
                 </p>
               </div>
             </div>
-            
+
             <div>
               <div className="text-xs text-purple-300">Language</div>
-              <div className="mt-2 flex gap-1 flex-wrap">
-                <div className="bg-white/10 rounded px-1.5 py-0.5">
+              <div className="mt-2 flex flex-wrap gap-1">
+                <div className="rounded bg-white/10 px-1.5 py-0.5">
                   <span className="text-[8px] text-white/80">insights</span>
                 </div>
-                <div className="bg-white/10 rounded px-1.5 py-0.5">
+                <div className="rounded bg-white/10 px-1.5 py-0.5">
                   <span className="text-[8px] text-white/80">intuitive</span>
                 </div>
-                <div className="bg-white/10 rounded px-1.5 py-0.5">
+                <div className="rounded bg-white/10 px-1.5 py-0.5">
                   <span className="text-[8px] text-white/80">time-saving</span>
                 </div>
               </div>
@@ -599,18 +639,20 @@ function DashboardsSection() {
       description:
         'All insights are generated automatically using artificial intelligence, minimizing the need for manual intervention.',
       graphic: (
-        <div className="w-full h-full bg-gray-800/70 rounded-lg overflow-hidden border border-white/10 flex flex-col">
-          <div className="bg-indigo-900/30 p-3 border-b border-white/10">
-            <div className="text-xs text-white/90 font-medium">AI Analytics</div>
+        <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-white/10 bg-gray-800/70">
+          <div className="border-b border-white/10 bg-indigo-900/30 p-3">
+            <div className="text-xs font-medium text-white/90">
+              AI Analytics
+            </div>
           </div>
-          
-          <div className="p-8 flex items-center justify-center">
+
+          <div className="flex items-center justify-center p-8">
             <div className="relative">
-              <div className="size-28 rounded-full bg-indigo-900/20 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-              <div className="size-20 rounded-full bg-indigo-900/30 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-              <div className="relative z-10 size-12 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
-                <svg 
-                  viewBox="0 0 24 24" 
+              <div className="absolute top-1/2 left-1/2 size-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-900/20"></div>
+              <div className="absolute top-1/2 left-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-900/30"></div>
+              <div className="relative z-10 flex size-12 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600">
+                <svg
+                  viewBox="0 0 24 24"
                   className="size-7 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -622,14 +664,14 @@ function DashboardsSection() {
                   <circle cx="12" cy="14" r="3" fill="white" />
                 </svg>
               </div>
-              
+
               <div className="absolute -top-6 -left-6">
-                <div className="size-8 rounded-md bg-blue-900/40 flex items-center justify-center">
+                <div className="flex size-8 items-center justify-center rounded-md bg-blue-900/40">
                   <Users className="h-4 w-4 text-blue-300" />
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6">
-                <div className="size-8 rounded-md bg-purple-900/40 flex items-center justify-center">
+              <div className="absolute -right-6 -bottom-6">
+                <div className="flex size-8 items-center justify-center rounded-md bg-purple-900/40">
                   <MessageSquare className="h-4 w-4 text-purple-300" />
                 </div>
               </div>
@@ -641,7 +683,7 @@ function DashboardsSection() {
   ]
 
   return (
-    <section className="mx-2 rounded-4xl bg-gray-900 py-24 mt-2">
+    <section className="mx-2 mt-2 rounded-4xl bg-gray-900 py-24">
       <Container>
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <Subheading dark>Dashboard Sections</Subheading>
@@ -649,7 +691,7 @@ function DashboardsSection() {
             Role-based dashboards for every team
           </Heading>
         </div>
-        
+
         <TabGroup
           className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
           vertical={tabOrientation === 'vertical'}
@@ -705,9 +747,7 @@ function DashboardsSection() {
                       </p>
                     </div>
                     <div className="mt-10 overflow-hidden rounded-xl shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[32rem] xl:w-[38rem]">
-                      <div className="p-8 h-[20rem]">
-                        {dashboard.graphic}
-                      </div>
+                      <div className="h-[20rem] p-8">{dashboard.graphic}</div>
                     </div>
                   </TabPanel>
                 ))}
@@ -721,36 +761,37 @@ function DashboardsSection() {
 }
 
 export default function Home() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  const [isNetworkingCardHovered, setIsNetworkingCardHovered] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(new Date())
+  const [isNetworkingCardHovered, setIsNetworkingCardHovered] = useState(false)
 
   return (
     <div className="overflow-hidden">
       <Hero />
       {/* <SwipeGrid /> */}
       <main>
-        
         <ProblemSolutionSection />
-        <Container className='mt-100 mb-120'>
+        <Container className="mt-100 mb-120">
           <div className="flex items-center justify-center gap-10">
-          <DynamicMark className='w-[360px] h-[360px]'></DynamicMark>
+            <DynamicMark className="h-[360px] w-[360px]"></DynamicMark>
             <div className="flex-1">
-              <h1 className="font-display text-4xl font-medium tracking-tight text-balance text-gray-950 sm:text-8xl md:text-8sxl/[0.9]">
-              sလrena, your voice of customer copilot.
+              <h1 className="font-display md:text-8sxl/[0.9] text-4xl font-medium tracking-tight text-balance text-gray-950 sm:text-8xl">
+                sလrena, your voice of customer copilot.
               </h1>
               <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-              Sorena listens to your users across 30+ tools and delivers insights you can act on.
-              </p></div>
-            
+                Sorena listens to your users across 30+ tools and delivers
+                insights you can act on.
+              </p>
+            </div>
           </div>
         </Container>
         <BentoSection />
         {/* <HeroImage /> */}
-        <DarkBentoSection setIsNetworkingCardHovered={setIsNetworkingCardHovered} />
-        {/* <PrimaryFeatures /> */}
-
+        <DarkBentoSection
+          setIsNetworkingCardHovered={setIsNetworkingCardHovered}
+        />
+        <PrimaryFeatures />
       </main>
-      {/* <SecondaryFeatures /> */}
+      <SecondaryFeatures />
       {/* <Testimonials /> */}
       <Footer />
       {isNetworkingCardHovered && <DynamicSpotlightCursor />}

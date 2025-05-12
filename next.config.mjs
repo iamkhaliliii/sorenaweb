@@ -18,8 +18,12 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     // This prevents the error with document/window references by using proper server/client separation
-    serverComponentsExternalPackages: ['react-icon-cloud', 'gsap', 'lottie-react'],
+    serverComponentsExternalPackages: [
+      'react-icon-cloud',
+      'gsap',
+      'lottie-react',
+    ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

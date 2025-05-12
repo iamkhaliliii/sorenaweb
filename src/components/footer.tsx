@@ -3,7 +3,6 @@ import { Button } from './button'
 import { Container } from './container'
 import { Gradient } from './gradient'
 import { Link } from './link'
-import { Logo } from './logo'
 import { Subheading } from './text'
 
 function CallToAction() {
@@ -18,11 +17,14 @@ function CallToAction() {
         </p>
       </hgroup>
       <p className="mx-auto mt-6 max-w-md text-sm/6 text-gray-500">
-        Get the insights that help you prioritize, support, and ship smarter—no setup, no training required.
+        Get the insights that help you prioritize, support, and ship smarter—no
+        setup, no training required.
       </p>
       <div className="mt-6">
         <Button className="w-full sm:w-auto" href="#">
-          <span role="img" aria-label="button icon" className="mr-2">🔘</span>
+          <span role="img" aria-label="button icon" className="mr-2">
+            🔘
+          </span>
           Get started
         </Button>
       </div>
@@ -60,7 +62,6 @@ function Sitemap() {
           <SitemapLink href="#">API</SitemapLink>
         </SitemapLinks>
       </div>
-
     </>
   )
 }
@@ -140,7 +141,6 @@ export function Footer() {
         <Container>
           <CallToAction />
           <PlusGrid className="pb-16">
-
             <PlusGridRow className="flex justify-between">
               <div>
                 <PlusGridItem className="py-3">

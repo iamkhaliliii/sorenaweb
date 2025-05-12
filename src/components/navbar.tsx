@@ -62,8 +62,8 @@ function MobileNav() {
             }}
             key={href}
           >
-            <Link 
-              href={href} 
+            <Link
+              href={href}
               className="text-base font-medium text-gray-950"
               scroll={!href.startsWith('/#')}
             >

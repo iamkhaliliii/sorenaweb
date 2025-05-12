@@ -1,16 +1,16 @@
 'use client'
 
 import { clsx } from 'clsx'
-import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import logoAnimation from '../../public/lottie/logo.json'
 
 const DynamicLottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 export function Logo({ className }: { className: string }) {
   return (
-    <Image 
-      src="/logo-svg/logo.svg" 
+    <Image
+      src="/logo-svg/logo.svg"
       alt="sလrena"
       width={127}
       height={23}
@@ -21,7 +21,7 @@ export function Logo({ className }: { className: string }) {
 
 export function Mark({ className }: { className: string }) {
   return (
-    <div className={clsx(className, 'w-[72px] h-[72px]', 'relative')}>
+    <div className={clsx(className, 'h-[72px] w-[72px]', 'relative')}>
       <DynamicLottie
         animationData={logoAnimation}
         loop={true}

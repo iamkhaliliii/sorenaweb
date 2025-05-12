@@ -1,6 +1,6 @@
+import { CustomHead } from '@/components/CustomHead'
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
-import { CustomHead } from '@/components/CustomHead'
 
 export const metadata: Metadata = {
   title: {

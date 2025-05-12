@@ -5,9 +5,12 @@ import { Checkbox, Field, Input, Label } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/16/solid'
 import { clsx } from 'clsx'
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
-const DynamicMark = dynamic(() => import('@/components/logo').then(mod => mod.Mark), { ssr: false });
+const DynamicMark = dynamic(
+  () => import('@/components/logo').then((mod) => mod.Mark),
+  { ssr: false },
+)
 
 export const metadata: Metadata = {
   title: 'Login',

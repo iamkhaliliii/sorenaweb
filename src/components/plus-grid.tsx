@@ -44,8 +44,6 @@ export function PlusGridItem({
   children: React.ReactNode
 }) {
   return (
-    <div className={clsx(className, 'group/item relative')}>
-      {children}
-    </div>
+    <div className={clsx(className, 'group/item relative')}>{children}</div>
   )
 }
