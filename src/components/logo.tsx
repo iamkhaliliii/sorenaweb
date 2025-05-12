@@ -2,8 +2,10 @@
 
 import { clsx } from 'clsx'
 import Image from 'next/image'
-import Lottie from 'lottie-react'
+import dynamic from 'next/dynamic'
 import logoAnimation from '../../public/lottie/logo.json'
+
+const DynamicLottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 export function Logo({ className }: { className: string }) {
   return (
@@ -20,7 +22,7 @@ export function Logo({ className }: { className: string }) {
 export function Mark({ className }: { className: string }) {
   return (
     <div className={clsx(className, 'w-[72px] h-[72px]', 'relative')}>
-      <Lottie
+      <DynamicLottie
         animationData={logoAnimation}
         loop={true}
         autoplay={true}

@@ -30,7 +30,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SwipeGrid from '@/components/swipe-grid';
 import HeroImage from '@/components/HeroImage';
-import { Mark } from '@/components/logo'
 import { Chart } from '@/components/Chart';
 
 // Dynamically import IconCloud with SSR disabled
@@ -38,6 +37,9 @@ const DynamicIconCloud = dynamic(
   () => import('@/components/ui/interactive-icon-cloud').then(mod => mod.IconCloud),
   { ssr: false }
 );
+
+const DynamicMark = dynamic(() => import('@/components/logo').then(mod => mod.Mark), { ssr: false });
+const DynamicLogoTimeline = dynamic(() => import('@/components/logo-timeline').then(mod => mod.LogoTimeline), { ssr: false });
 
 // Add dynamic import for SpotlightCursor
 const DynamicSpotlightCursor = dynamic(
@@ -427,7 +429,7 @@ function DarkBentoSection({ setIsNetworkingCardHovered }: DarkBentoSectionProps)
             eyebrow="Integrations"
             title="Built on a strategic VoC model."
             description="From public reviews to private conversations, we categorize, prioritize, and surface the right signals—at the right time."
-            graphic={<LogoTimeline />}
+            graphic={<DynamicLogoTimeline />}
             className="z-10 overflow-visible! lg:col-span-2 lg:rounded-tr-4xl"
           />
           {/* <BentoCard
@@ -731,7 +733,7 @@ export default function Home() {
         <ProblemSolutionSection />
         <Container className='mt-100 mb-120'>
           <div className="flex items-center justify-center gap-10">
-          <Mark className='w-[360px] h-[360px]'></Mark>
+          <DynamicMark className='w-[360px] h-[360px]'></DynamicMark>
             <div className="flex-1">
               <h1 className="font-display text-4xl font-medium tracking-tight text-balance text-gray-950 sm:text-8xl md:text-8sxl/[0.9]">
               sလrena, your voice of customer copilot.

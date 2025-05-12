@@ -21,6 +21,8 @@ const Keyboard = dynamic(
   { ssr: false }
 );
 
+const DynamicLogoTimeline = dynamic(() => import('@/components/logo-timeline').then(mod => mod.LogoTimeline), { ssr: false });
+
 export const metadata: Metadata = {
   description: 'Sorena turns scattered customer feedback into actionable insights through AI-powered dashboards.',
 }
@@ -81,7 +83,7 @@ function BentoSection() {
           eyebrow="Product"
           title="Top Feature Requests"
           description="Automatically cluster and rank feature requests based on frequency, sentiment, and segment."
-          graphic={<LogoTimeline />}
+          graphic={<DynamicLogoTimeline />}
           fade={['bottom']}
           className="max-lg:rounded-t-4xl lg:col-span-3 lg:rounded-tl-4xl"
         />

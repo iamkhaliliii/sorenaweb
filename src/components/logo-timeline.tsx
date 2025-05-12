@@ -1,5 +1,8 @@
 import { clsx } from 'clsx'
-import { Mark } from './logo'
+// import { Mark } from './logo'
+import dynamic from 'next/dynamic';
+
+const DynamicMark = dynamic(() => import('./logo').then(mod => mod.Mark), { ssr: false });
 
 function Row({ children }: { children: React.ReactNode }) {
   return (
@@ -52,7 +55,7 @@ export function LogoTimeline() {
           }}
         />
         <div className="relative flex size-24 items-center justify-center rounded-full bg-linear-to-t from-white/5 to-white/25 shadow-sm ring-1 ring-white/10 outline outline-offset-[-5px] outline-white/5 ring-inset">
-          <Mark className="h-[72px] w-[72px] fill-white" />
+          <DynamicMark className="h-[72px] w-[72px] fill-white" />
         </div>
       </div>
       <div className="[container-type:inline-size] absolute inset-0 grid grid-cols-1 pt-8">
