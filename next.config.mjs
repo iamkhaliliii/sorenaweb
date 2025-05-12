@@ -14,12 +14,11 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  // Change from standalone to server to fix SSR issues
-  output: 'export',
-  // Disable static optimization to prevent document not defined errors
+  // Use standard server rendering instead of static export
+  output: 'standalone',
   experimental: {
-    // This prevents the error with document/window references
-    appDocumentPreloading: false,
+    // This prevents the error with document/window references by using proper server/client separation
+    serverComponentsExternalPackages: ['react-icon-cloud', 'gsap', 'lottie-react'],
   },
 };
 

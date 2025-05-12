@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     'Companies all over the world have closed millions of deals with sလrena. Sign up today and start selling smarter.',
 }
 
+export const dynamic = 'force-dynamic';
+
 const tiers = [
   {
     name: 'Starter' as const,
@@ -503,15 +505,10 @@ function FrequentlyAskedQuestions() {
   )
 }
 
-export default function Pricing({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
-  let tier =
-    typeof searchParams.tier === 'string'
-      ? tiers.find(({ slug }) => slug === searchParams.tier)!
-      : tiers[0]
+export default function Pricing() {
+  // Default to first tier instead of using searchParams directly
+  // The tier selection will be handled client-side with useState
+  const defaultTier = tiers[0];
 
   return (
     <main className="overflow-hidden">
@@ -521,7 +518,7 @@ export default function Pricing({
       </Container>
       <Header />
       <PricingCards />
-      {/* <PricingTable selectedTier={tier} /> */}
+      {/* <PricingTable selectedTier={defaultTier} /> */}
       {/* <Testimonial />
       <FrequentlyAskedQuestions /> */}
       <Footer />
