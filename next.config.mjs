@@ -10,6 +10,12 @@ const nextConfig = {
       },
     ],
   },
+  // Optimize for Vercel deployment
+  swcMinify: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  // Ensure output is optimized for Vercel
+  output: 'standalone',
 };
 
 export default nextConfig;
