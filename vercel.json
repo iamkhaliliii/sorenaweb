@@ -3,6 +3,7 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": "nextjs",
+  "outputDirectory": "out",
   "regions": ["fra1"],
   "env": {
     "NEXT_PUBLIC_SITE_URL": "https://your-vercel-deployment-url.vercel.app"

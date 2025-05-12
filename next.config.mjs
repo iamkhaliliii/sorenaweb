@@ -14,8 +14,13 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  // Ensure output is optimized for Vercel
-  output: 'standalone',
+  // Change from standalone to server to fix SSR issues
+  output: 'export',
+  // Disable static optimization to prevent document not defined errors
+  experimental: {
+    // This prevents the error with document/window references
+    appDocumentPreloading: false,
+  },
 };
 
 export default nextConfig;
