@@ -18,6 +18,8 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import SwipeGrid from '@/components/swipe-grid'
+import HeroImage from '@/components/HeroImage'
 
 // Dynamically import IconCloud with SSR disabled
 const DynamicIconCloud = dynamic(
@@ -785,7 +787,7 @@ export default function Home() {
           </div>
         </Container>
         <BentoSection />
-        {/* <HeroImage /> */}
+        <HeroImage />
         <DarkBentoSection
           setIsNetworkingCardHovered={setIsNetworkingCardHovered}
         />
