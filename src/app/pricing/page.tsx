@@ -25,14 +25,15 @@ const tiers = [
     name: 'Starter' as const,
     slug: 'starter',
     description: 'Everything you need to start selling.',
-    priceMonthly: 99,
+    priceMonthly: 19,
     href: '#',
     highlights: [
-      { description: 'Up to 3 team members' },
-      { description: 'Up to 5 deal progress boards' },
-      { description: 'Source leads from select platforms' },
-      { description: 'sလrenaAI integrations', disabled: true },
-      { description: 'Competitor analysis', disabled: true },
+      { description: '70,000 words* / mo' },
+      { description: 'AI generated surveys + AI analysis' },
+      { description: 'Quarterly reports' },
+      { description: 'See mentions in original feedback' },
+      { description: 'Sync 30+ feedback sources' },
+      { description: 'Cancel anytime' },
     ],
     features: [
       { section: 'Features', name: 'Accounts', value: 3 },
@@ -53,14 +54,14 @@ const tiers = [
     name: 'Growth' as const,
     slug: 'growth',
     description: 'All the extras for your growing team.',
-    priceMonthly: 149,
+    priceMonthly: 299,
     href: '#',
     highlights: [
-      { description: 'Up to 10 team members' },
-      { description: 'Unlimited deal progress boards' },
-      { description: 'Source leads from over 50 verified platforms' },
-      { description: 'sလrenaAI integrations' },
-      { description: '5 competitor analyses per month' },
+      { description: '1,500,000 words* / mo' },
+      { description: 'Embed surveys on your website' },
+      { description: 'Analysis of backfilled data' },
+      { description: 'Annual reports' },
+      { description: 'Cancel anytime' },
     ],
     features: [
       { section: 'Features', name: 'Accounts', value: 10 },
@@ -81,14 +82,17 @@ const tiers = [
     name: 'Enterprise' as const,
     slug: 'enterprise',
     description: 'Added flexibility to close deals at scale.',
-    priceMonthly: 299,
-    href: '#',
+    href: '#contact-sales',
     highlights: [
-      { description: 'Unlimited active team members' },
-      { description: 'Unlimited deal progress boards' },
-      { description: 'Source leads from over 100 verified platforms' },
-      { description: 'sလrenaAI integrations' },
-      { description: 'Unlimited competitor analyses' },
+      { description: '2,000,000 words* / month' },
+      { description: 'Additional words (add-on)' },
+      { description: 'Custom reporting & analytics (add-on)' },
+      { description: 'Custom amount of chats with AI' },
+      { description: 'Advanced API access' },
+      { description: 'Dedicated onboarding' },
+      { description: 'Unlimited seats' },
+      { description: 'SLA support' },
+      { description: 'Plan billed annually' },
     ],
     features: [
       { section: 'Features', name: 'Accounts', value: 'Unlimited' },
@@ -129,7 +133,7 @@ function PricingCards() {
             <PricingCard key={tierIndex} tier={tier} />
           ))}
         </div>
-        <LogoCloud className="mt-24" />
+        {/* <LogoCloud className="mt-24" /> */}
       </Container>
     </div>
   )
@@ -143,16 +147,26 @@ function PricingCard({ tier }: { tier: (typeof tiers)[number] }) {
           <Subheading>{tier.name}</Subheading>
           <p className="mt-2 text-sm/6 text-gray-950/75">{tier.description}</p>
           <div className="mt-8 flex items-center gap-4">
-            <div className="text-5xl font-medium text-gray-950">
-              ${tier.priceMonthly}
-            </div>
-            <div className="text-sm/5 text-gray-950/75">
-              <p>USD</p>
-              <p>per month</p>
-            </div>
+            {tier.priceMonthly !== undefined ? (
+              <>
+                <div className="text-5xl font-medium text-gray-950">
+                  ${tier.priceMonthly}
+                </div>
+                <div className="text-sm/5 text-gray-950/75">
+                  <p>USD</p>
+                  <p>per month</p>
+                </div>
+              </>
+            ) : (
+              <div className="text-3xl font-medium text-gray-950">
+                Contact us
+              </div>
+            )}
           </div>
           <div className="mt-8">
-            <Button href={tier.href}>Start a free trial</Button>
+            <Button href={tier.href}>
+              {tier.priceMonthly !== undefined ? 'Start a free trial' : 'Contact Sales'}
+            </Button>
           </div>
           <div className="mt-8">
             <h3 className="text-sm/6 font-medium text-gray-950">
@@ -507,9 +521,9 @@ export default function Pricing({
       </Container>
       <Header />
       <PricingCards />
-      <PricingTable selectedTier={tier} />
-      <Testimonial />
-      <FrequentlyAskedQuestions />
+      {/* <PricingTable selectedTier={tier} /> */}
+      {/* <Testimonial />
+      <FrequentlyAskedQuestions /> */}
       <Footer />
     </main>
   )

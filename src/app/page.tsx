@@ -214,8 +214,8 @@ function ProblemSolutionSection() {
                   },
                   {
                     icon: <MessageSquare className="h-5 w-5" />,
-                    title: "Chat tools",
-                    examples: "Slack, Front",
+                    title: "Emails and Calls",
+                    examples: "Gmail, Gong",
                     color: "bg-green-50 text-green-600",
                   },
                   {
@@ -725,7 +725,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Hero />
-      <SwipeGrid />
+      {/* <SwipeGrid /> */}
       <main>
         
         <ProblemSolutionSection />
@@ -745,10 +745,10 @@ export default function Home() {
         <BentoSection />
         {/* <HeroImage /> */}
         <DarkBentoSection setIsNetworkingCardHovered={setIsNetworkingCardHovered} />
-        <PrimaryFeatures />
+        {/* <PrimaryFeatures /> */}
 
       </main>
-      <SecondaryFeatures />
+      {/* <SecondaryFeatures /> */}
       {/* <Testimonials /> */}
       <Footer />
       {isNetworkingCardHovered && <DynamicSpotlightCursor />}
